@@ -8,6 +8,7 @@ import { BASE_URL } from '../utils/constants';
 const Login = () => {
   const [emailId, setEmailId] = useState("pranshu923@gmail.com");
   const [password, setPassword] = useState("Pranshu@12356789");
+  const [error, setError] = useState("")
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
@@ -22,7 +23,7 @@ const Login = () => {
      dispatch(addUser(res.data))
      navigate("/")
     }catch(err){
-      console.error(err)
+      setError(err?.response?.data)
     }
   }
   return (
@@ -70,7 +71,7 @@ const Login = () => {
     type="password"
     required
     placeholder="Password"
-    minlength="8"
+    minLength="8"
     value={password}
     onChange={(e) => setPassword(e.target.value)}
     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -81,6 +82,7 @@ const Login = () => {
   Must be more than 8 characters, including
   <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
 </p>
+  <p className='text-red-600'>{error}</p>
     <div className="card-actions justify-end">
       <button className="btn btn-primary my-1" onClick={handleLogin}>Login</button>
     </div>
