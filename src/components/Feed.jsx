@@ -22,13 +22,7 @@ const Feed = () => {
     getFeed()
   }, [])
   
-//   if (!feed) {
-//   return <div className='flex items-center justify-center my-10'>Loading...</div>
-// }
 
-// if (feed.length === 0) {
-//   return <div className='flex items-center justify-center my-10'>No users available</div>
-// }
   return (
     feed &&(<div className='flex items-center justify-center my-10'>
       <UserCard user = {feed[0]}/>
