@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
    const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [isLoggedIn, setIsLoggedIn] = useState(true)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [error, setError] = useState("")
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -92,6 +92,7 @@ const Login = () => {
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
           />
+          {error &&<p>{error}</p>}
           <div><a className="link link-hover flex justify-center "onClick={() => setIsLoggedIn((value) => !value)}>{isLoggedIn? "Already a user? Login" : "New User? Sign Up"}</a></div>
           <button className="btn btn-neutral mt-4"onClick={isLoggedIn? handleSignUp :  handleLogin }>{isLoggedIn? "Sign Up": "Login"}</button>
         </fieldset>
