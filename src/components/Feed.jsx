@@ -7,7 +7,6 @@ import UserCard from './UserCard'
 
 const Feed = () => {
   const feed = useSelector((store) => store.feed)
-  console.log(feed)
   const dispatch = useDispatch()
   const getFeed = async () => {
     if (feed) return;
@@ -22,7 +21,8 @@ const Feed = () => {
     getFeed()
   }, [])
   
-
+  if(!feed) return
+  if(feed.length <= 0) return <h1 className='font-bold text-3xl text-center'>No new users available in the feed</h1>
   return (
     feed &&(<div className='flex items-center justify-center my-10'>
       <UserCard user = {feed[0]}/>

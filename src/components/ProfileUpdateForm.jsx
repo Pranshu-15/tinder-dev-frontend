@@ -13,7 +13,7 @@ const ProfileUpdateForm = ({ user }) => {
   const [gender, setGender] = useState(user.gender);
   const [age, setAge] = useState(user.age);
   const [about, setAbout] = useState(user.about);
-  const [skills, setSkills] = useState(user.skills);
+  const [skills, setSkills] = useState(user.skills?.join(', ') || '');
   const [error, setError] = useState('');
   const dispatch = useDispatch();
 
@@ -22,7 +22,7 @@ const ProfileUpdateForm = ({ user }) => {
     try {
       const res = await axios.patch(
         BASE_URL + '/profile/update',
-        { firstName, lastName, photoURL, gender, age, about, skills },
+        { firstName, lastName, photoURL, gender, age, about,  skills: skills.split(',').map(skill => skill.trim()).filter(skill => skill) },
         { withCredentials: true }
       );
       dispatch(addUser(res?.data?.data));
@@ -131,7 +131,7 @@ const ProfileUpdateForm = ({ user }) => {
       gender,
       age,
       about,
-      skills}} />
+      skills: skills.split(',').map(skill => skill.trim()).filter(skill => skill)}} />
 
       </div>
     </>
