@@ -2,13 +2,11 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <>
-     <footer className="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4 fixed bottom-0">
-  <aside>
-    <p>Copyright © {new Date().getFullYear()} - All right reserved by devTinder Ltd</p>
-  </aside>
-</footer> 
-    </>
+    <footer className="fixed bottom-0 w-full bg-black/30 backdrop-blur-xl border-t border-white/5 py-2.5 text-center z-40">
+      <p className="text-xs text-white/20">
+        © {new Date().getFullYear()} devTinder — Where code meets chemistry
+      </p>
+    </footer>
   )
 }
 

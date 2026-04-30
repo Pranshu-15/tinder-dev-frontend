@@ -1,2 +1,23 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+html, body, #root {
+  background: #080810;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #080810;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #FF416C, #FF4B2B);
+  border-radius: 99px;
+}
+
+* {
+  box-sizing: border-box;
+}
